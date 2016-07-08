@@ -1,17 +1,22 @@
 <div class="text-center login-form">
   <h1>Log In</h1>
+
   <%= form_for(:session, url: login_path, :html => {:class =>"form-horizontal"}) do |f| %>
+
     <div class="form-group">
       <%= f.label :email, class: "col-xs-2 control-label" %>
-      <div class="col-xs-10"><%= f.email_field :email, class: "form-control col-xs-8" %></div>
+      <div class="col-xs-10"><%= f.email_field :email, class: "form-control" %></div>
     </div>
+
     <br/>
+
     <div class="form-group">
       <%= f.label :password, class: "col-xs-2 control-label" %>
       <div class="col-xs-10"><%= f.password_field :password, class: "form-control" %></div>
     </div>
-    <br/>
+
     <p>Don't have an account? <%= link_to "Sign up", signup_path %></p>
+
     <%= f.submit "Log in", class: "btn btn-primary" %>
   <% end %>
 </div>
