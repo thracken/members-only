@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:sucess] = "Welcome, member!"
-      redirect_to root
+      flash[:success] = "Welcome, member!"
+      redirect_to root_path
     else
       flash.now[:error] = "Oops, something's not quite right."
       render 'new'
