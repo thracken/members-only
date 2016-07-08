@@ -1,12 +1,16 @@
-<h1>Log In</h1>
-<div class = "row">
-  <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+<div class="text-center login-form">
+  <h1>Log In</h1>
+  <%= form_for(:session, url: login_path, :html => {:class =>"form-horizontal"}) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: "col-xs-2 control-label" %>
+      <div class="col-xs-10"><%= f.email_field :email, class: "form-control col-xs-8" %></div>
+    </div>
     <br/>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <div class="form-group">
+      <%= f.label :password, class: "col-xs-2 control-label" %>
+      <div class="col-xs-10"><%= f.password_field :password, class: "form-control" %></div>
+    </div>
     <br/>
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
   <% end %>
 </div>
