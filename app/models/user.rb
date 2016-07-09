@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
   before_save {self.email = email.downcase}
-  before_create :save_remember_token
+  before_create :remember
   validates :name, presence: true, length: {minimum: 4}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -9,8 +10,16 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: {minimum: 8}
 
-  private
-    def save_remember_token
-      self.remember_digest = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64(20).to_s)
-    end
+  def authenticated?(token)
+    Digest::SHA1.hexdigest(remember_digest) == (token)
+  end
+
+  def User.new_token
+    Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64(20).to_s)
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, remember_token)
+  end
 end
