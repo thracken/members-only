@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome, member!"
       redirect_to root_path
     else
-      flash.now[:error] = "Oops, something's not quite right."
       render 'new'
     end
   end
