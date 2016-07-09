@@ -1,7 +1,7 @@
 <div class="row navbar navbar-default">
   <div class ="container-fluid">
     <ul class="nav navbar-nav">
-      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Home", root_url %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
@@ -11,12 +11,12 @@
             <li><%= link_to "Profile", current_user %></li>
             <li class="divider"></li>
             <li>
-              <%= link_to "Log out", logout_path, method: "delete" %>
+              <%= link_to "Log out", logout_url, method: "delete" %>
             </li>
           </ul>
         </li>
       <% else %>
-        <li><%= link_to "Log In", login_path %></li>
+        <li><%= link_to "Log In", login_url %></li>
       <% end %>
     </ul>
   </div>
