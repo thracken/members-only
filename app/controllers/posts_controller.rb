@@ -6,6 +6,13 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    if @post.save
+      flash[:success] = "Post created!"
+      redirect_to index_url
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -15,5 +22,9 @@ class PostsController < ApplicationController
   private
     def check_logged_in
       logged_in?
+    end
+
+    def post_params
+      params.require(:post).permit(:title,:body)
     end
 end
