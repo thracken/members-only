@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to index_url
+      redirect_to posts_url
     else
       render 'new'
     end
@@ -25,6 +25,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title,:body)
+      params.require(:post).permit(:title,:body,:user_id)
     end
 end

@@ -13,6 +13,8 @@
       <%= f.text_area :body, class: "form-control" %>
     </div>
 
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
+
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>
 </div>

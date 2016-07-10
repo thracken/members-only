@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: {minimum: 8}
 
+  has_many :posts
+
   def authenticated?(token)
     Digest::SHA1.hexdigest(remember_digest) == (token)
   end
