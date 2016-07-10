@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
+  resources :posts, only: [:new,:create,:index]
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
