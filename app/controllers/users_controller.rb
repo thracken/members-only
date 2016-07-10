@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    redirect_to posts_url
   end
 
   def new
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome, member!"
-      redirect_to posts_path
+      redirect_to posts_url
     else
       render 'new'
     end

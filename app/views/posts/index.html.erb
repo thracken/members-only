@@ -1,1 +1,15 @@
-<p>This is the Posts index page</p>
+<% @posts.each do |post| %>
+  <div class="row">
+    <div class="col-xs-1"></div>
+      <div class="post col-xs-10">
+        <h2>
+          <%= post.title %>
+          <% if logged_in? %>
+            <small>by <%= post.user.name %></small>
+          <% end %>
+        </h2>
+        <p><%= post.body %></p>
+      </div>
+    <div class="col-xs-1"></div>
+  </div>
+<% end %>
